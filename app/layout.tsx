@@ -23,7 +23,7 @@ export default function RootLayout({
           sizes="any"
         />
       </head>
-      <body className="relative min-h-screen w-full h-auto overflow-x-hidden ">
+      <body className="relative min-h-screen w-full h-auto overflow-x-hidden">
         <Suspense>
           <Nav />
         </Suspense>

@@ -20,7 +20,7 @@ export default async function IndexPage() {
         </div>
       </header> */}
       <main>
-        <div className="mx-auto h-[300vh] max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto h-[400vh] max-w-7xl py-6 sm:px-6 lg:px-8">
           -- Your content --
         </div>
       </main>
