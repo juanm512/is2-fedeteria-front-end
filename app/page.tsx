@@ -9,40 +9,7 @@ interface User {
   email: string;
 }
 
-export default async function IndexPage({
-  searchParams
-}: {
-  searchParams: { q: string };
-}) {
-  const search = searchParams.q ?? '';
-
-  const users = [
-    {
-      id: 1,
-      name: 'juan',
-      username: 'juanm512',
-      email: '512juanm@gmail.com'
-    },
-    {
-      id: 12,
-      name: 'Renzo',
-      username: 'renZovich',
-      email: 'ren.zo@gmail.com'
-    },
-    {
-      id: 13,
-      name: 'fermin',
-      username: 'MinFer',
-      email: 'min.fer.max@gmail.com'
-    },
-    {
-      id: 14,
-      name: 'alvarro',
-      username: 'alvaroPapas',
-      email: 'alvarro.lp@gmail.com'
-    }
-  ];
-
+export default async function IndexPage() {
   return (
     <>
       {/* <header className="bg-background-800 shadow">
