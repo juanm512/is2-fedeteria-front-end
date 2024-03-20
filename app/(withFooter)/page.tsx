@@ -1,13 +1,20 @@
-import Footer from '@/components/Footer';
 import { IconArrowDown, IconBox } from '@tabler/icons-react';
 import Image from 'next/image';
 
+import Footer from '@/components/Footer';
+import Sucursales from '@/components/Shared/Sucursales';
+import FAQ from '@/components/Shared/FAQ';
+
+export const metadata = {
+  title: 'Fedeteria',
+  description: 'Una web para hacer trueques.'
+};
+
 export default async function IndexPage() {
   return (
-    <main className="flex flex-col gap-48">
-      {/* ELIMINAR LOS BG DE LOS SECTIONS */}
+    <>
       {/* hero de toda la vida */}
-      <section className="mx-auto flex flex-col sm:flex-row items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8 bg-background-900/5">
+      <section className="mx-auto flex flex-col sm:flex-row items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8">
         <div className="w-full sm:w-8/12 lg:w-6/12 h-fit flex flex-col justify-evenly items-start px-2 sm:px-8 gap-8">
           <h1 className="text-7xl font-bold text-primary-500">
             Bienvenido a la web de la Fedeteria!
@@ -39,15 +46,16 @@ export default async function IndexPage() {
           </div>
         </div>
       </section>
+
       {/* seccion para algunas stats de la pagina */}
-      <section className="mx-auto flex flex-col sm:flex-row items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[50vh] py-8 px-2 sm:px-8 bg-background-900/5">
+      <section className="mx-auto flex flex-col sm:flex-row items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[50vh] py-8 px-2 sm:px-8">
         <div className="w-full sm:w-1/3 aspect-video bg-primary-200 rounded-xl"></div>
         <div className="w-full sm:w-1/3 aspect-video bg-primary-200 rounded-xl"></div>
         <div className="w-full sm:w-1/3 aspect-video bg-primary-200 rounded-xl"></div>
       </section>
 
       {/* seccion para los productos recientes */}
-      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8 bg-background-900/5">
+      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8">
         <h1 className="text-4xl underline font-bold text-primary-500">
           Productos publicados recientemente
         </h1>
@@ -72,7 +80,7 @@ export default async function IndexPage() {
       </section>
 
       {/* seccion para los ultimos intercambios realizados */}
-      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8 bg-background-900/5">
+      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8">
         <h1 className="text-4xl underline font-bold text-primary-500">
           Ultimos intercambios realizados
         </h1>
@@ -97,7 +105,7 @@ export default async function IndexPage() {
       </section>
 
       {/* seccion para valoraciones de los clientes */}
-      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[50vh] py-8 px-2 sm:px-8 bg-background-900/5">
+      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[50vh] py-8 px-2 sm:px-8">
         <h1 className="text-4xl underline font-bold text-primary-500">
           Comentarios de nuestros clientes
         </h1>
@@ -118,56 +126,10 @@ export default async function IndexPage() {
       </section>
 
       {/* boton cta a las preguntas frecuentes */}
-      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[50vh] py-8 px-2 sm:px-8 bg-background-900/5">
-        <h1 className="text-4xl underline font-bold text-primary-500">
-          Preguntas Frecuentes
-        </h1>
-        <div className="flex flex-wrap w-full sm:w-10/12 mx-auto">
-          <div className="w-full sm:w-3/4 p-4">
-            {' '}
-            <div className="w-full h-32 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-          <div className="w-full sm:w-1/4 p-4">
-            {' '}
-            <div className="w-full h-32 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-        </div>
-      </section>
+      <FAQ />
 
       {/* mostrar las sucursales de la fedeteria */}
-      <section className="mx-auto flex flex-col items-center justify-around gap-16 sm:gap-4 lg:gap-16 w-full max-w-[100rem] min-h-[95vh] py-8 px-2 sm:px-8 bg-background-900/5">
-        <h1 className="text-4xl underline font-bold text-primary-500">
-          Donde encontrarnos?
-        </h1>
-        <div className="flex flex-col w-full sm:w-8/12 mx-auto">
-          <div className="w-full p-4">
-            {' '}
-            <div className="aspect-w-16 aspect-h-2 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-          <div className="w-full p-4">
-            {' '}
-            <div className="aspect-w-16 aspect-h-2 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-          <div className="w-full p-4">
-            {' '}
-            <div className="aspect-w-16 aspect-h-2 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-          <div className="w-full p-4">
-            {' '}
-            <div className="aspect-w-16 aspect-h-2 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-          <div className="w-full p-4">
-            {' '}
-            <div className="aspect-w-16 aspect-h-2 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-          <div className="w-full p-4">
-            {' '}
-            <div className="aspect-w-16 aspect-h-2 bg-primary-200 rounded-xl"></div>{' '}
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+      <Sucursales />
+    </>
   );
 }

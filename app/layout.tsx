@@ -3,11 +3,6 @@ import './globals.css';
 
 import Nav from '@/components/Header';
 
-export const metadata = {
-  title: 'Fedeteria',
-  description: 'Una web para hacer trueques.'
-};
-
 export default function RootLayout({
   children
 }: {
@@ -24,8 +19,8 @@ export default function RootLayout({
       </head>
       <body className="relative min-h-screen w-full h-auto overflow-x-hidden">
         <Nav />
-        {children}
 
+        <main className="flex flex-col gap-48">{children}</main>
         <ScrollToTop />
       </body>
     </html>

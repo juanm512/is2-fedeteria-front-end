@@ -1,11 +1,6 @@
 'use client';
-import {
-  IconUserCircle,
-  IconEditCircle,
-  IconLogout2
-} from '@tabler/icons-react';
+import { IconUserCircle } from '@tabler/icons-react';
 
-import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Profile({ children }: { children: React.ReactNode }) {
@@ -28,16 +23,6 @@ export default function Profile({ children }: { children: React.ReactNode }) {
         <IconUserCircle />
       </button>
 
-      {/*<!--
-              Dropdown menu, show/hide based on menu state.
-  
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            --> */}
       {children}
     </div>
   );

@@ -1,17 +1,4 @@
-import {
-  IconReplace,
-  IconHome,
-  IconMapPins,
-  IconUsersGroup,
-  IconEditCircle,
-  IconLogout2,
-  IconUserCircle,
-  IconLogin,
-  IconLogs,
-  IconDeviceDesktopAnalytics
-} from '@tabler/icons-react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import MobileMenu from '@/components/Header/MobileMenu';
 import Notifications from '@/components/Header/Notifications';
