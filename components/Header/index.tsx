@@ -23,12 +23,12 @@ import NavLinks from './NavLinks';
 export default async function Nav() {
   return (
     <nav className="w-full bg-secondary-700">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between">
+      <div className="mx-auto w-full max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between z-30">
           {/* <!-- Mobile menu, show/hide based on menu state. --> */}
           <MobileMenu>
             <div
-              className="absolute -ml-2 w-screen bg-secondary-700 top-16 sm:hidden group-data-[state=expanded]:opacity-100 group-data-[state=collapsed]:opacity-0 transition-all duration-300"
+              className="absolute z-20 -ml-2 w-screen bg-secondary-700 top-16 sm:hidden group-data-[state=expanded]:opacity-100 group-data-[state=collapsed]:opacity-0 group-data-[state=expanded]:-translate-y-0 group-data-[state=collapsed]:-translate-y-[200%] transition-all duration-500"
               id="mobile-menu"
             >
               <div className="w-11/12 mx-auto space-y-1 px-2 pb-3 pt-2">

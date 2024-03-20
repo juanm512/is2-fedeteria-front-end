@@ -19,7 +19,7 @@ export default function ScrollToTop() {
   return (
     // yScroll > 0 && (
     <button
-      data-state={yScroll > 50 ? 'scrolled' : 'top'}
+      data-state={yScroll > 500 ? 'scrolled' : 'top'}
       onClick={() => window.scrollTo(0, 0)}
       className="fixed bottom-2 right-2 p-1 bg-accent-500 rounded-2xl border transition-all duration-500 hover:-translate-y-1 data-[state=scrolled]:translate-y-0 data-[state=top]:translate-y-16 data-[state=scrolled]:opacity-100 data-[state=top]:opacity-0"
     >

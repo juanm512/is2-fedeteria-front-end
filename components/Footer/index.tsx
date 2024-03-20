@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <div className="w-full min-h-[30vh] h-fit py-8 px-4 flex flex-col sm:flex-row items-center justify-between bg-background-300">
+    <footer className="w-full min-h-[30vh] h-fit py-8 px-4 flex flex-col sm:flex-row items-center justify-between bg-background-300">
       <div className="flex h-full w-full sm:w-4/12 px-2 flex-col items-center sm:items-start justify-start gap-2">
         <div className="relative aspect-video w-10/12 mx-auto">
           <Image
@@ -45,6 +45,6 @@ export default function Footer() {
           Politicas de Privacidad
         </Link>
       </div>
-    </div>
+    </footer>
   );
 }
