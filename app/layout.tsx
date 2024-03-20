@@ -24,9 +24,7 @@ export default function RootLayout({
         />
       </head>
       <body className="relative min-h-screen w-full h-auto overflow-x-hidden">
-        <Suspense>
-          <Nav />
-        </Suspense>
+        <Nav />
         {children}
         {/* <Toast /> */}
       </body>
