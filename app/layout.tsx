@@ -1,8 +1,7 @@
+import ScrollToTop from '@/components/Common/ScrollToTop';
 import './globals.css';
 
 import Nav from '@/components/Header';
-// import Toast from '../components/toast';
-import { Suspense } from 'react';
 
 export const metadata = {
   title: 'Fedeteria',
@@ -26,7 +25,8 @@ export default function RootLayout({
       <body className="relative min-h-screen w-full h-auto overflow-x-hidden">
         <Nav />
         {children}
-        {/* <Toast /> */}
+
+        <ScrollToTop />
       </body>
     </html>
   );
