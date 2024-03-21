@@ -9,7 +9,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full bg-background-100 text-text-900">
+    <html
+      lang="en"
+      className="bg-gradient-to-br from-background-50 to-accent-50 text-text-900"
+    >
       <head>
         <link
           rel="icon"
@@ -20,7 +23,7 @@ export default function RootLayout({
       <body className="relative min-h-screen w-full h-auto overflow-x-hidden">
         <Nav />
 
-        <main className="flex flex-col gap-48">{children}</main>
+        <main className="flex h-full flex-col gap-32">{children}</main>
         <ScrollToTop />
       </body>
     </html>

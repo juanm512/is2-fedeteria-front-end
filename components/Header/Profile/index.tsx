@@ -1,19 +1,20 @@
 'use client';
 import { IconUserCircle } from '@tabler/icons-react';
-
-import { useState } from 'react';
+import { useNavStore } from '@/utils/stores/nav';
 
 export default function Profile({ children }: { children: React.ReactNode }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { menuOpen, changeMenuOpen, closeMenuOpen } = useNavStore();
   return (
     <div
-      data-state={menuOpen ? 'expanded' : 'collapsed'}
+      data-state={menuOpen === 'PROFILE' ? 'expanded' : 'collapsed'}
       className="group relative"
     >
       <button
-        onClick={() => setMenuOpen((prev) => !prev)}
+        onClick={() =>
+          menuOpen === 'PROFILE' ? closeMenuOpen() : changeMenuOpen('PROFILE')
+        }
         type="button"
-        className="relative rounded-md p-1 flex text-text-300 hover:text-text-100 focus:outline-none focus:ring-2 focus:ring-white focus:bg-accent-600 focus:text-text-50 transition-transform duration-150 hover:-translate-y-0.5"
+        className="relative rounded-md p-1 flex text-text-300 hover:text-text-100 group-data-[state=expanded]:outline-none group-data-[state=expanded]:ring-2 group-data-[state=expanded]:ring-white hover:bg-gradient-to-tl group-data-[state=expanded]:text-text-50 group-data-[state=expanded]:bg-gradient-to-tl to-accent-400 from-secondary-800 transition-transform duration-150 hover:-translate-y-0.5"
         id="user-menu-button"
         aria-expanded="false"
         aria-haspopup="true"

@@ -6,6 +6,7 @@ import NotificationsViewer from '@/components/Header/Notifications/Viewer';
 import Profile from '@/components/Header/Profile';
 import ProfileLinks from '@/components/Header/Profile/Links';
 import NavLinks from './NavLinks';
+import Link from 'next/link';
 
 export default async function Nav() {
   return (
@@ -26,7 +27,10 @@ export default async function Nav() {
           </MobileMenu>
 
           <div className="flex flex-1 items-center justify-center sm:justify-start">
-            <div className="relative h-16 aspect-video flex flex-shrink-0 items-center">
+            <Link
+              href={'/'}
+              className="relative h-16 aspect-video flex flex-shrink-0 items-center drop-shadow-lg"
+            >
               <Image
                 width={100}
                 height={100}
@@ -34,7 +38,7 @@ export default async function Nav() {
                 src="/fedeteria_logos/Fedeteria_Horizontal.svg"
                 alt="Your Company"
               />
-            </div>
+            </Link>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {/* <!-- Current: "bg-primary-500 text-text-800 font-semibold", Default: "text-text-200 hover:bg-secondary-800 hover:text-text-100" --> */}

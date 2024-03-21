@@ -1,22 +1,27 @@
 'use client';
 
+import { useNavStore } from '@/utils/stores/nav';
 import { IconMenu, IconX } from '@tabler/icons-react';
-import { useState } from 'react';
 
 export default function MobileMenu({
   children
 }: {
   children: React.ReactNode;
 }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { menuOpen, changeMenuOpen, closeMenuOpen } = useNavStore();
   return (
-    <div data-state={menuOpen ? 'expanded' : 'collapsed'} className="group">
+    <div
+      data-state={menuOpen === 'MOBILE' ? 'expanded' : 'collapsed'}
+      className="group"
+    >
       <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
         {/* <!-- Mobile menu button -->*/}
         <button
-          onClick={() => setMenuOpen((prev) => !prev)}
+          onClick={() =>
+            menuOpen === 'MOBILE' ? closeMenuOpen() : changeMenuOpen('MOBILE')
+          }
           type="button"
-          className="relative inline-flex items-center justify-center rounded-md p-2 text-text-300 hover:text-text-100 focus:outline-none focus:ring-2 focus:ring-white focus:bg-accent-600 focus:text-text-50"
+          className="relative inline-flex items-center justify-center rounded-md p-2 text-text-300 hover:text-text-100 group-data-[state=expanded]:outline-none group-data-[state=expanded]:ring-2 group-data-[state=expanded]:ring-white hover:bg-gradient-to-tl group-data-[state=expanded]:text-text-50 group-data-[state=expanded]:bg-gradient-to-tl to-accent-400 from-secondary-800"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
