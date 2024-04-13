@@ -11,40 +11,32 @@ export default function NavLinks() {
     <>
       <Link
         href="/"
-        className="bg-gradient-to-tl to-primary-500 from-accent-500 text-text-800 block font-bold rounded-md px-3 py-2 text-sm will-change-transform transition-transform duration-150 hover:-translate-y-0.5"
+        className="relative group text-primary-500 block font-bold rounded-md px-3 py-2 text-sm transition-colors duration-150 hover:text-primary-400"
         aria-current="page"
       >
-        <span className="flex items-center gap-2">
-          <IconHome />
-          Inicio
-        </span>
+        Inicio
+        <span className="absolute w-0 h-0.5 bg-primary-400 bottom-2 left-0 sm:left-1/2 sm:-translate-x-[50%] transition-all duration-150 group-hover:w-10/12" />
       </Link>
       <Link
         href="/productos"
-        className="text-text-200 hover:bg-gradient-to-tl to-accent-900 from-secondary-800 block hover:text-text-100 rounded-md px-3 py-2 text-sm font-medium will-change-transform transition-transform duration-150 hover:-translate-y-0.5"
+        className="relative group text-secondary-500 block font-bold rounded-md px-3 py-2 text-sm transition-colors duration-150 hover:text-secondary-200"
       >
-        <span className="flex items-center gap-2">
-          <IconReplace />
-          Productos
-        </span>
+        Productos
+        <span className="absolute w-0 h-0.5 bg-secondary-200 bottom-2 left-0 sm:left-1/2 sm:-translate-x-[50%] transition-all duration-150 group-hover:w-10/12" />
       </Link>
       <Link
         href="/sucursales"
-        className="text-text-200 hover:bg-gradient-to-tl to-accent-900 from-secondary-800  block hover:text-text-100 rounded-md px-3 py-2 text-sm font-medium will-change-transform transition-transform duration-150 hover:-translate-y-0.5"
+        className="relative group text-secondary-500 block font-bold rounded-md px-3 py-2 text-sm transition-colors duration-150 hover:text-secondary-200"
       >
-        <span className="flex items-center gap-2">
-          <IconMapPins />
-          Sucursales
-        </span>
+        Sucursales
+        <span className="absolute w-0 h-0.5 bg-secondary-200 bottom-2 left-0 sm:left-1/2 sm:-translate-x-[50%] transition-all duration-150 group-hover:w-10/12" />
       </Link>
       <Link
         href="/nosotros"
-        className="text-text-200 hover:bg-gradient-to-tl to-accent-900 from-secondary-800  block hover:text-text-100 rounded-md px-3 py-2 text-sm font-medium will-change-transform transition-transform duration-150 hover:-translate-y-0.5"
+        className="relative group text-secondary-500 block font-bold rounded-md px-3 py-2 text-sm transition-colors duration-150 hover:text-secondary-200"
       >
-        <span className="flex items-center gap-2">
-          <IconUsersGroup />
-          Nosotros
-        </span>
+        Nosotros
+        <span className="absolute w-0 h-0.5 bg-secondary-200 bottom-2 left-0 sm:left-1/2 sm:-translate-x-[50%] transition-all duration-150 group-hover:w-10/12" />
       </Link>
     </>
   );

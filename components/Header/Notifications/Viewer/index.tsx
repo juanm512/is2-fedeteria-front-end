@@ -22,13 +22,7 @@ export default function NavigationViewer() {
             --> */
   }
   return (
-    <div
-      className="absolute right-0 z-10 mt-2 w-96 origin-top-right rounded-md bg-secondary-800 overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none group-data-[state=expanded]:block group-data-[state=collapsed]:hidden group-data-[state=expanded]:opacity-100 group-data-[state=collapsed]:opacity-0 transition-all duration-300"
-      role="menu"
-      aria-orientation="vertical"
-      aria-labelledby="user-menu-button"
-      tabIndex={-1}
-    >
+    <>
       {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
       <Link
         href="#"
@@ -87,6 +81,6 @@ export default function NavigationViewer() {
       >
         <IconLogout2 /> Cerrar sesión
       </Link>
-    </div>
+    </>
   );
 }

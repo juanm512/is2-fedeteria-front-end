@@ -1,3 +1,6 @@
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+
 export default function index() {
   return (
     <main className="flex w-full items-center justify-center min-h-[90vh] h-full px-6 py-24 sm:py-32 lg:px-8">
@@ -10,12 +13,15 @@ export default function index() {
           Perdon, no hemos podido encontrar la pagina que estabas buscando.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <a
-            href="/"
-            className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+          <Link
+            href={'/'}
+            className="relative w-1/2 sm:w-fit rounded-xl bg-secondary-800"
           >
-            Volver al inicio
-          </a>
+            <span className="flex items-center justify-center rounded-lg text-lg font-medium gap-2 px-4 py-2 bg-gradient-to-tl to-primary-500 from-accent-500 text-text-800 hover:-translate-y-1 will-change-transform transition-transform ">
+              Volver al inicio
+              <ArrowRight />
+            </span>
+          </Link>
           <a href="/" className="text-sm font-semibold text-gray-900">
             Contactanos por email <span aria-hidden="true">&rarr;</span>
           </a>

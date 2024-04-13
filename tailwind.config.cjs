@@ -7,6 +7,13 @@ module.exports = {
     './node_modules/@tremor/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px'
+      }
+    },
     transparent: 'transparent',
     current: 'currentColor',
     aspectRatio: {
@@ -96,7 +103,7 @@ module.exports = {
           800: '#57530f',
           900: '#2b2a08',
           950: '#161504'
-        }
+        },
         // DEFAULTS
         // colors: {
         //   'text': '#121212',
@@ -133,6 +140,20 @@ module.exports = {
         //   strong: '#111827', // gray-900
         //   inverted: '#ffffff' // white
         // }
+        keyframes: {
+          'accordion-down': {
+            from: { height: '0' },
+            to: { height: 'var(--radix-accordion-content-height)' }
+          },
+          'accordion-up': {
+            from: { height: 'var(--radix-accordion-content-height)' },
+            to: { height: '0' }
+          }
+        },
+        animation: {
+          'accordion-down': 'accordion-down 0.2s ease-out',
+          'accordion-up': 'accordion-up 0.2s ease-out'
+        }
       }
     }
   },
