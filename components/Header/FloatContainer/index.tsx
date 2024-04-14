@@ -4,10 +4,12 @@ import { useNavStore } from '@/lib/utils/stores/nav';
 
 export default function MobileContainer({
   children,
-  menu
+  menu,
+  wClass
 }: {
   children: React.ReactNode;
   menu: string;
+  wClass?: string;
 }) {
   const { menuOpen } = useNavStore();
   return (
@@ -16,11 +18,11 @@ export default function MobileContainer({
         <motion.div
           initial={{
             height: '0',
-            opacity: 0.7
+            opacity: 0
           }}
           exit={{
             height: '0',
-            opacity: 0.7,
+            opacity: 0,
             transition: {
               duration: 0.1,
               delay: 0.05,
@@ -36,7 +38,11 @@ export default function MobileContainer({
               ease: 'easeIn'
             }
           }}
-          className="absolute hidden sm:block right-0 z-10 w-48 origin-top-right rounded-b-md bg-secondary-700 top-16 shadow-lg overflow-hidden"
+          className={
+            'absolute hidden sm:block right-0 z-10 origin-top-right rounded-b-md bg-secondary-700 top-16 shadow-lg ' +
+            (wClass || ' w-48')
+          }
+          style={{ overflow: 'hidden' }}
           id="floating-menu"
         >
           {/* {menuOpen + menu} */}

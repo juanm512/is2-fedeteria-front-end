@@ -12,7 +12,7 @@ import FloatContainer from './FloatContainer';
 
 export default async function Nav() {
   return (
-    <nav className="w-full bg-secondary-700">
+    <nav className="relative w-full bg-secondary-700 z-30">
       <div className="mx-auto w-full max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between z-30">
           {/* <!-- Mobile menu, show/hide based on menu state. --> */}
@@ -26,7 +26,7 @@ export default async function Nav() {
             <ProfileLinks />
           </MobileContainer>
           <MobileContainer menu="NOTIFICATIONS">
-            <ProfileLinks />
+            <NotificationsViewer />
           </MobileContainer>
 
           <div className="flex flex-1 items-center justify-center sm:justify-start">
@@ -52,13 +52,13 @@ export default async function Nav() {
 
           <div className="absolute inset-y-0 right-0 flex items-center gap-1 sm:gap-4 pr-1 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Notifications />
-            <FloatContainer menu="NOTIFICATIONS">
+            <FloatContainer menu="NOTIFICATIONS" wClass={'w-96'}>
               <NotificationsViewer />
             </FloatContainer>
 
             {/* PROFILE */}
             <ProfileButton />
-            <FloatContainer menu="PROFILE">
+            <FloatContainer menu="PROFILE" wClass={'w-48'}>
               <ProfileLinks />
             </FloatContainer>
           </div>

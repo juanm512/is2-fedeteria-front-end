@@ -1,19 +1,18 @@
-export default function NavigationViewer() {
-  {
-    /*<!--
-              Dropdown menu, show/hide based on menu state.
-  
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            --> */
-  }
-  return (
+import { Card, Title, Text } from '@tremor/react';
 
-      <ul role="list" className="divide-y divide-gray-100 px-2">
+import UsersTable from '@/components/table';
+
+interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+}
+
+export default async function IndexPage() {
+  return (
+    <main className="p-4 md:p-10 mx-auto max-w-7xl">
+      <ul role="list" className="divide-y divide-gray-100">
         <li className="flex justify-between gap-x-6 py-5">
           <div className="flex min-w-0 gap-x-4">
             <img
@@ -165,6 +164,6 @@ export default function NavigationViewer() {
           </div>
         </li>
       </ul>
-
+    </main>
   );
 }
