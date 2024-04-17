@@ -1,21 +1,9 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { login } from '../actions';
 
 export default async function IndexPage() {
-  // const pathname = usePathname();
-  // const { origin } = window.location;
-  // console.log(origin);
-
-  // const supabase = createClient();
-  // const logIn = async () => {
-  //   await supabase.auth.signInWithOAuth({
-  //     provider: "google",
-  //     options: {
-  //       redirectTo: origin + "/auth/callback?next=" + pathname,
-  //     },
-  //   });
-  // };
   return (
     <div className="flex min-h-full flex-col justify-center my-auto px-6 py-24 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -32,8 +20,26 @@ export default async function IndexPage() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6" action={login}>
           <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Email
+            </label>
+            <div className="mt-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          {/* <div>
             <label
               htmlFor="dni"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -50,7 +56,7 @@ export default async function IndexPage() {
                 className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
               />
             </div>
-          </div>
+          </div> */}
 
           <div>
             <div className="flex items-center justify-between">

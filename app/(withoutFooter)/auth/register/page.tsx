@@ -227,9 +227,9 @@ export default async function IndexPage() {
                         id="sucursal-chivilcoy"
                         value="chivilcoy"
                         name="sucursal"
-                        className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-700 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
+                        className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-800 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
                       />
-                      <p className="ms-3 select-none text-gray-800 peer-checked:text-accent-700 brightness-125">
+                      <p className="ms-3 select-none text-gray-800 ">
                         <span className="block text-sm font-semibold ">
                           Chivilcoy
                         </span>

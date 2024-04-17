@@ -3,7 +3,7 @@ import './globals.css';
 
 import Nav from '@/components/Header';
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode;

@@ -11,19 +11,17 @@ export async function login(formData: FormData) {
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
+  const userData = {
     email: formData.get('email') as string,
     password: formData.get('password') as string
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { data, error } = await supabase.auth.signInWithPassword(userData);
 
+  console.log('DATA ON LOGIN: ', data);
+  console.log('ERROR ON LOGIN: ', error);
   if (error) {
-    console.log('ERROR ON LOGIN: ', error);
-    // redirect('/error'); // create an error page to redirect when somethong went wrong
-    // export default function ErrorPage() {
-    //     return <p>Sorry, something went wrong</p>
-    //   }
+    redirect('/error');
   }
 
   revalidatePath('/', 'layout');
@@ -81,12 +79,9 @@ export async function signup(prevState: any, formData: FormData) {
 
   if (error) {
     console.log('ERROR ON SINGUP: ', error);
-    // redirect('/error'); // create an error page to redirect when somethong went wrong
-    // export default function ErrorPage() {
-    //     return <p>Sorry, something went wrong</p>
-    //   }
+    redirect('/error');
   }
 
   revalidatePath('/', 'layout');
-  redirect('/');
+  redirect('/auth/confirm-email');
 }
