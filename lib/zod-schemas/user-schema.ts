@@ -1,73 +1,60 @@
 import { z } from 'zod';
 
-// //Creating an object schema
-// const signupSchema = z.object({
-//   username: z
-//     .string({ required_error: 'Username is required' })
-//     .trim()
-//     .min(3, {
-//       message: 'Username must be at least 3 chars'
-//     })
-//     .max(255, { message: 'Username must not be more than 255 chars long' }),
-//   email: z
-//     .string({ required_error: 'Email is required' })
-//     .trim()
-//     .min(3, {
-//       message: 'Email must be at least 3 chars'
-//     })
-//     .max(255, { message: 'Email must not be more than 255 chars long' }),
-//   phone: z
-//     .string({ required_error: 'Phone number is required' })
-//     .trim()
-//     .min(3, {
-//       message: 'Phone number must be at least 10 chars'
-//     })
-//     .max(255, { message: 'Phone number must not be more than 20 chars long' }),
-//   password: z
-//     .string({ required_error: 'Password is required' })
-//     .trim()
-//     .min(3, {
-//       message: 'Password must be at least 6 chars'
-//     })
-//     .max(255, { message: 'Password must not be more than 1024 chars long' })
+const MIN_NOT_ALCANCED = (campo: string, len: number) =>
+  `${campo}: debe tener más de ${len} caractéres de logitud.`;
+const MAX_EXCEDED = (campo: string, len: number) =>
+  `${campo}: debe tener menos de ${len} caractéres de logitud.`;
+
+export const signupSchema = z.object({
+  nombre: z
+    .string()
+    .trim()
+    .min(2, MIN_NOT_ALCANCED('Nombre', 2))
+    .max(100, MAX_EXCEDED('Nombre', 100)),
+  apellido: z
+    .string()
+    .trim()
+    .min(2, MIN_NOT_ALCANCED('Apellido', 2))
+    .max(100, MAX_EXCEDED('Apellido', 100)),
+  dni: z
+    .string()
+    .trim()
+    .min(7, MIN_NOT_ALCANCED('DNI', 7))
+    .max(10, MAX_EXCEDED('DNI', 10)),
+  email: z.string().email().max(100, MAX_EXCEDED('Email', 100)),
+  phone: z
+    .string()
+    .trim()
+    .min(8, MIN_NOT_ALCANCED('Numero de contacto', 8))
+    .max(11, MAX_EXCEDED('Numero de contacto', 11)),
+  password: z
+    .string()
+    .min(6, MIN_NOT_ALCANCED('Contraseña', 6))
+    .max(100, MAX_EXCEDED('Contraseña', 100)),
+  password_valid: z.literal('1', {
+    errorMap: () => ({
+      message: 'La Contraseña debe ser valida.'
+    })
+  }),
+  repeat_password_valid: z.literal('1', {
+    errorMap: () => ({
+      message: 'Las Contraseñas no coinciden.'
+    })
+  }),
+  policies_and_conditions: z.literal('on', {
+    errorMap: () => ({
+      message: 'La casilla de aceptación no esta marcada.'
+    })
+  })
+});
+// .superRefine(({ password, repeat_password }, ctx) => {
+//   if (password !== repeat_password) {
+//     ctx.addIssue({
+//       path: ['repeat_password'],
+//       code: 'custom',
+//       message: 'Las contraseñas no son iguales!'
+//     });
+//   }
 // });
 
-// module.exports = signupSchema;
-
-const REQUIRED_FIELD_ERROR = 'Campo obligatorio';
-const MIN_NOT_ALCANCED = (len: number) =>
-  `El campo debe tener más de ${len} caractéres`;
-
-export const schema = z
-  .object({
-    name: z.string().nonempty(REQUIRED_FIELD_ERROR).min(6, MIN_NOT_ALCANCED(6)),
-    email: z.string().nonempty(REQUIRED_FIELD_ERROR),
-    password: z
-      .string()
-      .nonempty(REQUIRED_FIELD_ERROR)
-      .min(6, MIN_NOT_ALCANCED(6)),
-    repeat_password: z
-      .string()
-      .nonempty(REQUIRED_FIELD_ERROR)
-      .min(6, MIN_NOT_ALCANCED(6)),
-    accept: z.literal(true, {
-      errorMap: () => ({
-        message: 'Para continuar você deve aceitar os termos.'
-      })
-    }),
-    bornDay: z
-      .string()
-      .nonempty(REQUIRED_FIELD_ERROR)
-      .min(6, MIN_NOT_ALCANCED(6))
-  })
-  .superRefine(({ password, repeat_password }, ctx) => {
-    if (password !== repeat_password) {
-      ctx.addIssue({
-        path: ['repeat_password'],
-        code: 'custom',
-        message: 'Las contraseñas no son iguales!'
-      });
-    }
-  });
-
-export type FormSchemaType = z.infer<typeof schema>;
+export type FormSchemaType = z.infer<typeof signupSchema>;

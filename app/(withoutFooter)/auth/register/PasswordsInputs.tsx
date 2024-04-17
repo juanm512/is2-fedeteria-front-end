@@ -48,13 +48,31 @@ export default function PwsInputs() {
 
   return (
     <>
+      <input
+        type="number"
+        value={Object.values(state).every((value) => value) ? 1 : 0}
+        id="pw-valid"
+        name="pw-valid"
+        required
+        readOnly
+        className="hidden"
+      />
+      <input
+        type="number"
+        value={pwsEquals ? 1 : 0}
+        id="repeat-pw-valid"
+        name="repeat-pw-valid"
+        required
+        readOnly
+        className="hidden"
+      />
       <div className="sm:col-span-3">
         <label
           htmlFor="password"
           className="flex items-end justify-between text-sm font-medium leading-6 text-gray-900"
         >
           Contraseña
-          <div className="size-4 group relative inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-accent-600 ">
+          <div className="size-4 group relative inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-accent-50 hover:border-accent-200 hover:text-accent-600 ">
             <HelpCircleIcon />
             <div
               className="group absolute hidden bottom-full mb-1 flex-col justify-start w-56 z-10 py-1 px-2 bg-gray-900/70 text-xs text-start font-medium text-white opacity-0 transition-opacity rounded shadow-sm group-hover:opacity-100 group-hover:flex"
@@ -109,7 +127,7 @@ export default function PwsInputs() {
             type="password"
             autoComplete="password"
             className={
-              'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 outline-none hover:ring-1 hover:ring-accent-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' +
+              'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 outline-none hover:ring-1 hover:ring-accent-700 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6' +
               (Object.values(state).every((value) => value)
                 ? ' text-green-600 focus:ring-green-600'
                 : ' text-red-600 focus:ring-red-600')
@@ -133,7 +151,7 @@ export default function PwsInputs() {
             type="password"
             autoComplete="repeat_password"
             className={
-              'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 outline-none hover:ring-1 hover:ring-accent-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' +
+              'block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 outline-none hover:ring-1 hover:ring-accent-700 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6' +
               (pwsEquals
                 ? ' text-green-600 focus:ring-green-600'
                 : ' text-red-600 focus:ring-red-600')
