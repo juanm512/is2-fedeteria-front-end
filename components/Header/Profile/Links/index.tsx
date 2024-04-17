@@ -8,12 +8,27 @@ import {
   IconForms
 } from '@tabler/icons-react';
 import Link from 'next/link';
+import { createClient } from '@/lib/utils/supabase/server';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
-export default function ProfileLinks() {
-  const logged = true;
+export default async function ProfileLinks() {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+  const { user } = data;
+
+  const logout = async () => {
+    'use server';
+    const supabase = createClient();
+    const { error } = await supabase.auth.signOut();
+    console.log('error al cerrar sesion: ', error);
+    revalidatePath('/', 'layout');
+    redirect('/');
+  };
+
   return (
     <>
-      {!logged ? (
+      {!data || error ? (
         <>
           <Link
             href="/auth/login"
@@ -37,8 +52,11 @@ export default function ProfileLinks() {
         </>
       ) : (
         <>
+          <p className="flex items-center justify-center gap-4 underline text-sm font-medium px-4 py-2 text-text-200">
+            Hola, {user ? user.user_metadata.first_name : 'Usuario'}
+          </p>
           <Link
-            href="/perfil"
+            href="/mi-perfil"
             className="flex items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
             role="menuitem"
             tabIndex={-1}
@@ -46,48 +64,37 @@ export default function ProfileLinks() {
           >
             <IconUserCircle /> Perfil
           </Link>
-          {/* <Link
-            href="/perfil/editar"
-            className="flex items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
-            role="menuitem"
-            tabIndex={-1}
-            id="user-menu-item-1"
-          >
-            <IconEditCircle />
-            Editar Perfil
-          </Link> */}
-          <Link
-            href="/moderation"
-            className="flex items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
-            role="menuitem"
-            tabIndex={-1}
-            id="user-menu-item-1"
-          >
-            <IconLogs />
-            Panel Moderacion
-          </Link>
-          <Link
-            href="/admin"
-            className="flex items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
-            role="menuitem"
-            tabIndex={-1}
-            id="user-menu-item-1"
-          >
-            <IconDeviceDesktopAnalytics />
-            Estadisticas
-          </Link>
-          <form
-            className="w-full"
-            action={async () => {
-              'use server';
-              console.log('log out clicked');
-            }}
-          >
+          {data?.user?.user_metadata.role !== 'normal' && (
+            <Link
+              href="/moderacion"
+              className="flex items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
+              role="menuitem"
+              tabIndex={-1}
+              id="user-menu-item-1"
+            >
+              <IconLogs />
+              Panel Moderacion
+            </Link>
+          )}
+          {data?.user?.user_metadata.role !== 'normal' &&
+            data?.user?.user_metadata.role !== 'moderador' && (
+              <Link
+                href="/administracion"
+                className="flex items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
+                role="menuitem"
+                tabIndex={-1}
+                id="user-menu-item-1"
+              >
+                <IconDeviceDesktopAnalytics />
+                Estadisticas
+              </Link>
+            )}
+          <form className="w-full" action={logout}>
             <button
               className="flex w-full items-center gap-4 hover:bg-secondary-600 px-4 py-2 text-sm text-text-200"
               role="menuitem"
               tabIndex={-1}
-              id="user-menu-item-2"
+              type="submit"
             >
               <IconLogout2 /> Cerrar sesión
             </button>
