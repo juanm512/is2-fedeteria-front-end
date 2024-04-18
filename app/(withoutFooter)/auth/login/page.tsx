@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import PasswordInput from './PasswordInput';
 import LogInForm from './LogInForm';
+import { SubmitButton } from '../register/SubmitButton';
 
 export default async function IndexPage() {
   return (
@@ -82,12 +83,42 @@ export default async function IndexPage() {
           </div>
 
           <div>
-            <button
+            <SubmitButton
+              className="relative w-full bg-secondary-800 rounded-lg transition-all duration-200 hover:-translate-y-1 disabled:opacity-30 disabled:select-none disabled:cursor-not-allowed disabled:pointer-events-none"
+              pendingComponent={
+                <span className="flex justify-center gap-4 w-full px-6 py-2 text-lg font-bold bg-primary-500 items-center rounded-sm transition-transform duration-200 hover:-translate-y-1 ">
+                  <span
+                    className="animate-bounce"
+                    style={{ animationDelay: '0.2s' }}
+                  >
+                    .
+                  </span>
+                  <span
+                    className="animate-bounce"
+                    style={{ animationDelay: '0.5s' }}
+                  >
+                    .
+                  </span>
+                  <span
+                    className="animate-bounce"
+                    style={{ animationDelay: '0.4s' }}
+                  >
+                    .
+                  </span>
+                </span>
+              }
+              submitComponent={
+                <span className="flex w-full px-6 py-2 text-base font-medium bg-primary-500 items-center justify-center rounded-md transition-transform duration-200 hover:-translate-y-1 ">
+                  Iniciar sesión
+                </span>
+              }
+            />
+            {/* <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
             >
               Iniciar sesión
-            </button>
+            </button> */}
           </div>
         </LogInForm>
 
