@@ -159,21 +159,20 @@ export default async function IndexPage() {
             </div>
 
             <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
+              {/* <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Preferencias
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
                 Esta informacion podra ser modificada luego.
-              </p>
+              </p> */}
 
               <div className="mt-10 space-y-10">
                 <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
+                  <legend className="text-base font-semibold leading-6 text-gray-900">
                     Sucursal preferida
                   </legend>
                   <p className="mt-1 text-sm leading-6 text-gray-600">
-                    Selecciona una sucursal de la lista. Todas estan en la
-                    provincia de Buenos Aires.
+                    Selecciona una sucursal de la lista.
                   </p>
                   <div className="grid sm:grid-cols-2 gap-2">
                     <label
