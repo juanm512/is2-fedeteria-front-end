@@ -6,11 +6,9 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/utils/supabase/server';
 import { signupSchema } from '@/lib/zod-schemas/user-schema';
 
-export async function login(formData: FormData) {
+export async function login(prevState: any, formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const userData = {
     email: formData.get('email') as string,
     password: formData.get('password') as string
@@ -19,9 +17,9 @@ export async function login(formData: FormData) {
   const { data, error } = await supabase.auth.signInWithPassword(userData);
 
   console.log('DATA ON LOGIN: ', data);
-  console.log('ERROR ON LOGIN: ', error);
   if (error) {
-    redirect('/error');
+    console.log('ERROR ON LOGIN: ', error);
+    return 'Credenciales de inicio de sesion invalidas!';
   }
 
   revalidatePath('/', 'layout');
@@ -29,7 +27,7 @@ export async function login(formData: FormData) {
 }
 
 export async function signup(prevState: any, formData: FormData) {
-  console.log(formData);
+  // console.log(formData);
   const userData = {
     nombre: formData.get('first-name'),
     apellido: formData.get('last-name'),
