@@ -1,9 +1,16 @@
 'use client';
 import { IconUserCircle } from '@tabler/icons-react';
 import { useNavStore } from '@/lib/utils/stores/nav';
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Profile() {
+  const pathname = usePathname();
   const { menuOpen, changeMenuOpen, closeMenuOpen } = useNavStore();
+
+  useEffect(() => {
+    closeMenuOpen();
+  }, [pathname]);
   return (
     <button
       onClick={() =>
