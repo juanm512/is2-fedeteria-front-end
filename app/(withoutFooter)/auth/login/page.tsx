@@ -54,7 +54,7 @@ export default async function IndexPage() {
                 type="text"
                 autoComplete="dni"
                 required
-                className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div> */}
@@ -70,7 +70,7 @@ export default async function IndexPage() {
               <div className="text-sm">
                 <Link
                   href="/auth/forgot-password"
-                  className="font-semibold text-accent-600 hover:text-accent-500"
+                  className="font-semibold text-primary-600 hover:text-primary-500"
                 >
                   ¿La olvidaste?
                 </Link>
@@ -84,7 +84,7 @@ export default async function IndexPage() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-accent-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-accent-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
+              className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
             >
               Iniciar sesión
             </button>
@@ -95,7 +95,7 @@ export default async function IndexPage() {
           ¿No tenes usuario?
           <Link
             href="/auth/register"
-            className="ml-2 font-semibold leading-6 text-accent-600 hover:text-accent-500"
+            className="ml-2 font-semibold leading-6 text-primary-600 hover:text-primary-500"
           >
             Registrate acá
           </Link>

@@ -15,7 +15,7 @@ export default function Notifications() {
       className={
         'relative rounded-full p-1 flex transition-all duration-200 overflow-hidden border ' +
         (menuOpen === 'NOTIFICATIONS'
-          ? 'outline-none ring-0 ring-white text-text-800 bg-accent-300/70 border-transparent'
+          ? 'outline-none ring-0 ring-white text-text-800 bg-primary-300/70 border-transparent'
           : 'text-text-300 hover:text-text-100 border-secondary-500/50')
       }
       id="user-menu-button"

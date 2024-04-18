@@ -31,7 +31,7 @@ export default async function IndexPage() {
           ¿Ya tenes usuario?
           <Link
             href="/auth/register"
-            className="ml-2 font-semibold leading-6 text-accent-600 hover:text-accent-500"
+            className="ml-2 font-semibold leading-6 text-primary-600 hover:text-primary-500"
           >
             Inicia sesión acá
           </Link>
@@ -177,7 +177,7 @@ export default async function IndexPage() {
                   <div className="grid sm:grid-cols-2 gap-2">
                     <label
                       htmlFor="sucursal-capital-federal"
-                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-accent-500 focus-within:border-accent-500 focus-within:ring-accent-500 has-[:checked]:bg-accent-100 has-[:checked]:text-accent-900 has-[:checked]:border-accent-500"
+                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-primary-500 focus-within:border-primary-500 focus-within:ring-primary-500 has-[:checked]:bg-primary-100 has-[:checked]:text-primary-900 has-[:checked]:border-primary-500"
                     >
                       <input
                         type="radio"
@@ -186,7 +186,7 @@ export default async function IndexPage() {
                         name="sucursal"
                         className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-700 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
                       />
-                      <p className="ms-3 select-none text-gray-800 peer-checked:text-accent-700 brightness-125">
+                      <p className="ms-3 select-none text-gray-800">
                         <span className="block text-sm font-semibold ">
                           Capital Federal
                         </span>
@@ -198,16 +198,16 @@ export default async function IndexPage() {
 
                     <label
                       htmlFor="sucursal-la-plata"
-                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-accent-500 focus-within:border-accent-500 focus-within:ring-accent-500 has-[:checked]:bg-accent-100 has-[:checked]:text-accent-900 has-[:checked]:border-accent-500"
+                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-primary-500 focus-within:border-primary-500 focus-within:ring-primary-500 has-[:checked]:bg-primary-100 has-[:checked]:text-primary-900 has-[:checked]:border-primary-500"
                     >
                       <input
                         type="radio"
                         id="sucursal-la-plata"
                         value="la-plata"
                         name="sucursal"
-                        className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-700 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
+                        className="peer shrink-0 mt-0.5 h-fit rounded-full accent-primary-700 focus:ring-0 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none"
                       />
-                      <p className="ms-3 select-none text-gray-800 peer-checked:text-accent-700 brightness-125">
+                      <p className="ms-3 select-none text-gray-800">
                         <span className="block text-sm font-semibold ">
                           La Plata
                         </span>
@@ -219,7 +219,7 @@ export default async function IndexPage() {
 
                     <label
                       htmlFor="sucursal-chivilcoy"
-                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-accent-500 focus-within:border-accent-500 focus-within:ring-accent-500 has-[:checked]:bg-accent-100 has-[:checked]:text-accent-900 has-[:checked]:border-accent-500"
+                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-primary-500 focus-within:border-primary-500 focus-within:ring-primary-500 has-[:checked]:bg-primary-100 has-[:checked]:text-primary-900 has-[:checked]:border-primary-500"
                     >
                       <input
                         type="radio"
@@ -240,7 +240,7 @@ export default async function IndexPage() {
 
                     <label
                       htmlFor="sucursal-dolores"
-                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-accent-500 focus-within:border-accent-500 focus-within:ring-accent-500 has-[:checked]:bg-accent-100 has-[:checked]:text-accent-900 has-[:checked]:border-accent-500"
+                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-primary-500 focus-within:border-primary-500 focus-within:ring-primary-500 has-[:checked]:bg-primary-100 has-[:checked]:text-primary-900 has-[:checked]:border-primary-500"
                     >
                       <input
                         type="radio"
@@ -249,7 +249,7 @@ export default async function IndexPage() {
                         name="sucursal"
                         className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-700 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
                       />
-                      <p className="ms-3 select-none text-gray-800 peer-checked:text-accent-700 brightness-125">
+                      <p className="ms-3 select-none text-gray-800">
                         <span className="block text-sm font-semibold ">
                           Dolores
                         </span>
@@ -261,7 +261,7 @@ export default async function IndexPage() {
 
                     <label
                       htmlFor="sucursal-berazategui"
-                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-accent-500 focus-within:border-accent-500 focus-within:ring-accent-500 has-[:checked]:bg-accent-100 has-[:checked]:text-accent-900 has-[:checked]:border-accent-500"
+                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-primary-500 focus-within:border-primary-500 focus-within:ring-primary-500 has-[:checked]:bg-primary-100 has-[:checked]:text-primary-900 has-[:checked]:border-primary-500"
                     >
                       <input
                         type="radio"
@@ -270,7 +270,7 @@ export default async function IndexPage() {
                         name="sucursal"
                         className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-700 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
                       />
-                      <p className="ms-3 select-none text-gray-800 peer-checked:text-accent-700 brightness-125">
+                      <p className="ms-3 select-none text-gray-800">
                         <span className="block text-sm font-semibold ">
                           Berazategui
                         </span>
@@ -282,7 +282,7 @@ export default async function IndexPage() {
 
                     <label
                       htmlFor="sucursal-bahia-blanca"
-                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-accent-500 focus-within:border-accent-500 focus-within:ring-accent-500 has-[:checked]:bg-accent-100 has-[:checked]:text-accent-900 has-[:checked]:border-accent-500"
+                      className="flex items-center p-3 w-full bg-white border border-gray-200 rounded-lg hover:border-primary-500 focus-within:border-primary-500 focus-within:ring-primary-500 has-[:checked]:bg-primary-100 has-[:checked]:text-primary-900 has-[:checked]:border-primary-500"
                     >
                       <input
                         type="radio"
@@ -291,7 +291,7 @@ export default async function IndexPage() {
                         name="sucursal"
                         className="peer shrink-0 mt-0.5 h-fit rounded-full accent-accent-700 focus:ring-0 focus:ring-accent-500 disabled:opacity-50 disabled:pointer-events-none"
                       />
-                      <p className="ms-3 select-none text-gray-800 peer-checked:text-accent-700 brightness-125">
+                      <p className="ms-3 select-none text-gray-800">
                         <span className="block text-sm font-semibold ">
                           Bahia Blanca
                         </span>
@@ -315,7 +315,7 @@ export default async function IndexPage() {
                           id="policies_and_conditions"
                           name="policies_and_conditions"
                           type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 accent-accent-400 focus:ring-accent-600"
+                          className="h-4 w-4 rounded border-gray-300 accent-primary-400 focus:ring-primary-600"
                           required
                         />
                       </div>
@@ -329,11 +329,11 @@ export default async function IndexPage() {
                         <p className="text-gray-500">
                           Para crear su cuenta debe estar de acuerdo con
                           nuestras{' '}
-                          <Link href="/" className="text-accent-600 underline">
+                          <Link href="/" className="text-primary-600 underline">
                             Politicas de privacidad
                           </Link>{' '}
                           y nuestros{' '}
-                          <Link href="/" className="text-accent-600 underline">
+                          <Link href="/" className="text-primary-600 underline">
                             Terminos de servicio
                           </Link>
                         </p>
@@ -346,7 +346,7 @@ export default async function IndexPage() {
                           id="offers"
                           name="offers"
                           type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 accent-accent-400 focus:ring-accent-600"
+                          className="h-4 w-4 rounded border-gray-300 accent-primary-400 focus:ring-primary-600"
                         />
                       </div>
                       <div className="text-sm leading-6">
@@ -372,7 +372,7 @@ export default async function IndexPage() {
             <SubmitButton
               className="relative bg-secondary-800 rounded-md transition-all duration-200 hover:-translate-y-1 disabled:opacity-30 disabled:select-none disabled:cursor-not-allowed disabled:pointer-events-none"
               pendingComponent={
-                <span className="flex justify-center gap-4 w-48 px-6 py-2 text-lg font-bold bg-accent-500 items-center rounded-sm transition-transform duration-200 hover:-translate-y-1 ">
+                <span className="flex justify-center gap-4 w-48 px-6 py-2 text-lg font-bold bg-primary-500 items-center rounded-sm transition-transform duration-200 hover:-translate-y-1 ">
                   <span
                     className="animate-bounce"
                     style={{ animationDelay: '0.2s' }}
@@ -394,7 +394,7 @@ export default async function IndexPage() {
                 </span>
               }
               submitComponent={
-                <span className="flex w-48 px-6 py-2 text-base font-medium bg-accent-500 items-center justify-center rounded-sm transition-transform duration-200 hover:-translate-y-1 ">
+                <span className="flex w-48 px-6 py-2 text-base font-medium bg-primary-500 items-center justify-center rounded-sm transition-transform duration-200 hover:-translate-y-1 ">
                   Registrarme
                 </span>
               }
