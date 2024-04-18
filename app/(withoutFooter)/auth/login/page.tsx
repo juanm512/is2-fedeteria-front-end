@@ -17,7 +17,7 @@ export default async function IndexPage() {
           alt="Your Company"
         />
         <h2 className="mt-10 text-center text-3xl font-semibold leading-9 tracking-tight text-gray-900">
-          Inicia Sesion en tu cuenta
+          Ingresá a tu cuenta
         </h2>
       </div>
 
