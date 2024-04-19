@@ -1,8 +1,19 @@
-export default function RootLayout({
+import { createClient } from '@/lib/utils/supabase/server';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
+
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data?.user) {
+    redirect('/auth/login');
+  }
+
   return (
     <div className="flex flex-row w-full">
       <SideBar />
@@ -10,8 +21,6 @@ export default function RootLayout({
     </div>
   );
 }
-
-import Link from 'next/link';
 
 function SideBar() {
   return (

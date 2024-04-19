@@ -23,7 +23,7 @@ export default async function IndexPage() {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <LogInForm>
-          <div>
+          {/* <div>
             <label
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -40,8 +40,8 @@ export default async function IndexPage() {
                 className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
               />
             </div>
-          </div>
-          {/* <div>
+          </div> */}
+          <div>
             <label
               htmlFor="dni"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -58,7 +58,7 @@ export default async function IndexPage() {
                 className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               />
             </div>
-          </div> */}
+          </div>
 
           <div>
             <div className="flex items-center justify-between">

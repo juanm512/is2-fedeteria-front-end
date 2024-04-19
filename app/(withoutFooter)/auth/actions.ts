@@ -9,8 +9,16 @@ import { signupSchema } from '@/lib/zod-schemas/user-schema';
 export async function login(prevState: any, formData: FormData) {
   const supabase = createClient();
 
+  const { data: dataEmail, error: errorEmail } = await getEmailByDNI(
+    formData.get('dni') as string
+  );
+
+  if (errorEmail || !dataEmail) {
+    return 'Credenciales de inicio de sesion invalidas!';
+  }
+
   const userData = {
-    email: formData.get('email') as string,
+    email: dataEmail.email,
     password: formData.get('password') as string
   };
 
@@ -23,7 +31,7 @@ export async function login(prevState: any, formData: FormData) {
   }
 
   revalidatePath('/', 'layout');
-  redirect('/');
+  redirect('/mi-perfil');
 }
 
 export async function signup(prevState: any, formData: FormData) {
@@ -40,7 +48,6 @@ export async function signup(prevState: any, formData: FormData) {
     policies_and_conditions: formData.get('policies_and_conditions')
   };
   const validatedFields = signupSchema.safeParse(userData);
-  // console.log({ ...validatedFields.error });
   // Return early if the form data is invalid
   if (!formData.get('sucursal')) {
     return ['No hay ninguna sucursal seleccionada!'];
@@ -54,10 +61,20 @@ export async function signup(prevState: any, formData: FormData) {
     return errorsMsgs;
   }
 
-  const supabase = createClient();
+  const dniResponse = await dniAlreadyExists(userData.dni as string);
+  if (dniResponse.error) {
+    return [dniResponse.error];
+  } else if (dniResponse.data) {
+    return ['DNI ya utilizado'];
+  }
+  const emailResponse = await emailAlreadyExists(userData.email as string);
+  if (emailResponse.error) {
+    return [emailResponse.error];
+  } else if (emailResponse.data) {
+    return ['Email ya utilizado'];
+  }
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+  const supabase = createClient();
 
   const { error } = await supabase.auth.signUp({
     email: formData.get('email') as string,
@@ -83,3 +100,62 @@ export async function signup(prevState: any, formData: FormData) {
   revalidatePath('/', 'layout');
   redirect('/auth/confirm-email');
 }
+
+const emailAlreadyExists = async (email: string) => {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id,dni')
+    .eq('email', email);
+
+  console.log('DATA ON email ALREADY EXISTS: ', data);
+  console.log('ERROR ON email ALREADY EXISTS: ', error);
+  if (error) {
+    return { data: null, error: error.message };
+  }
+
+  if (!data || data === undefined || data === null || data.length == 0) {
+    return { data: false, error: null };
+  }
+
+  return { data: true, error: null };
+};
+const dniAlreadyExists = async (dni: string) => {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id,email')
+    .eq('dni', dni);
+
+  console.log('DATA ON DNI ALREADY EXISTS: ', data);
+  console.log('ERROR ON DNI ALREADY EXISTS: ', error);
+  if (error) {
+    return { data: null, error: error.message };
+  }
+
+  if (!data || data === undefined || data === null || data.length == 0) {
+    return { data: false, error: null };
+  }
+
+  return { data: true, error: null };
+};
+
+const getEmailByDNI = async (dni: string) => {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id,email')
+    .eq('dni', dni);
+
+  console.log('DATA ON GET EMAIL BY DNI: ', data);
+  console.log('ERROR ON GET EMAIL BY DNI: ', error);
+  if (error) {
+    return { data: null, error: error.message };
+  }
+
+  if (!data || data === undefined || data === null || data.length == 0) {
+    return { data: null, error: null };
+  }
+
+  return { data: data[0], error: null };
+};
