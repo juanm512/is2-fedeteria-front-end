@@ -310,14 +310,15 @@ export default async function IndexPage() {
                 <fieldset>
                   <div className="space-y-6">
                     <div className="relative flex gap-x-3">
-                      <div className="flex h-6 items-center">
+                      <div className="relative flex h-6 items-center">
                         <input
                           id="policies_and_conditions"
                           name="policies_and_conditions"
                           type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 accent-primary-400 focus:ring-primary-600"
+                          className="peer z-10 h-4 w-4 rounded border-gray-300 accent-primary-400 focus:ring-primary-600"
                           required
                         />
+                        <div className="absolute h-4 w-4 rounded bg-secondary-800 transition-transform peer-checked:translate-y-0.5 peer-checked:translate-x-0.5" />
                       </div>
                       <div className="text-sm leading-6">
                         <label
@@ -341,13 +342,14 @@ export default async function IndexPage() {
                     </div>
 
                     <div className="relative flex gap-x-3">
-                      <div className="flex h-6 items-center">
+                      <div className="relative flex h-6 items-center">
                         <input
                           id="offers"
                           name="offers"
                           type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 accent-primary-400 focus:ring-primary-600"
+                          className="peer z-10 h-4 w-4 rounded border-gray-300 accent-primary-400 focus:ring-primary-600"
                         />
+                        <div className="absolute h-4 w-4 rounded bg-secondary-800 transition-transform peer-checked:translate-y-0.5 peer-checked:translate-x-0.5" />
                       </div>
                       <div className="text-sm leading-6">
                         <label
