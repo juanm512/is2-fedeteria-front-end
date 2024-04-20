@@ -1,15 +1,22 @@
 'use client';
 
+import { setURLParams } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { useOptimistic } from 'react';
 
 export default function FilterSucursales({
-  sucursalesSP,
+  searchParams,
   startTransition
 }: {
-  sucursalesSP: string[];
+  searchParams: { [key: string]: string | string[] | undefined };
   startTransition: any;
 }) {
+  let sucursalesSP = !searchParams.sucursal
+    ? []
+    : typeof searchParams.sucursal === 'string'
+    ? [searchParams.sucursal]
+    : searchParams.sucursal;
+
   let router = useRouter();
 
   let [optimisticSucursales, setOptimisticSucursales] =
@@ -31,6 +38,7 @@ export default function FilterSucursales({
           {/*  */}
           {Object.entries(sucursales).map(([key, value]) => (
             <label
+              key={key}
               htmlFor={'filter_sucursales' + key}
               className="relative flex min-w-[60%] w-fit gap-x-3 cursor-pointer"
             >
@@ -40,20 +48,20 @@ export default function FilterSucursales({
                   name="sucursales"
                   type="checkbox"
                   onChange={() => {
+                    let params = setURLParams(searchParams);
+
+                    optimisticSucursales.includes(key)
+                      ? params.delete('sucursal', key)
+                      : params.append('sucursal', key);
+
                     let newSucursales = !optimisticSucursales.includes(key)
                       ? [...optimisticSucursales, key]
                       : optimisticSucursales.filter((g) => g !== key);
 
-                    let newParams = new URLSearchParams(
-                      newSucursales
-                        .sort()
-                        .map((sucursal) => ['sucursal', sucursal])
-                    );
-
                     startTransition(() => {
                       setOptimisticSucursales(newSucursales.sort());
 
-                      router.push(`?${newParams}`);
+                      router.push(`?${params}`);
                     });
                   }}
                   checked={optimisticSucursales.includes(key)}

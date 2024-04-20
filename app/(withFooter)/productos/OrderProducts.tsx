@@ -1,8 +1,21 @@
 'use client';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useOptimistic, useState, useTransition } from 'react';
 
-export default function OrderProducts() {
+import { setURLParams } from '@/lib/utils';
+
+export default function OrderProducts({
+  searchParams
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  let order = searchParams.orderBy || '';
+
+  let router = useRouter();
+  let [pending, startTransition] = useTransition();
+  let [optimisticOrder, setOptimisticOrder] = useOptimistic(order);
+
   const [menuActive, setMenuActive] = useState(false);
 
   return (
@@ -30,9 +43,9 @@ export default function OrderProducts() {
             aria-hidden="true"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </button>
@@ -62,25 +75,61 @@ export default function OrderProducts() {
             }}
           >
             <div className="py-1" role="none">
-              <a
-                href="#"
-                className="font-medium text-gray-900 block px-4 py-2 text-sm bg-gray-300"
+              <button
+                className={
+                  'block w-full px-4 py-2 text-sm' +
+                  (optimisticOrder !== ''
+                    ? ' text-gray-500 hover:bg-gray-200'
+                    : ' font-medium text-gray-900 bg-gray-300')
+                }
                 role="menuitem"
                 tabIndex={-1}
-                id="menu-item-0"
-              >
-                Most Popular
-              </a>
+                id="menu-item-no-order"
+                onClick={() => {
+                  setMenuActive((prev) => !prev);
 
-              <a
-                href="#"
-                className="text-gray-500 block px-4 py-2 text-sm hover:bg-gray-200"
-                role="menuitem"
-                tabIndex={-1}
-                id="menu-item-2"
+                  let params = setURLParams(searchParams);
+                  // console.log(params.toString());
+                  if (params.has('orderBy')) params.delete('orderBy');
+                  // console.log(params.toString());
+
+                  startTransition(() => {
+                    setOptimisticOrder('');
+                    if (params.size == 0) router.push(`?`);
+                    else router.push(`?${params}`);
+                  });
+                }}
               >
-                Newest
-              </a>
+                Sin orden
+              </button>
+              {Object.entries(orderBy).map(([key, value]) => (
+                <button
+                  key={key}
+                  className={
+                    'block w-full px-4 py-2 text-sm' +
+                    (optimisticOrder !== key
+                      ? ' text-gray-500 hover:bg-gray-200'
+                      : ' font-medium text-gray-900 bg-gray-300')
+                  }
+                  role="menuitem"
+                  tabIndex={-1}
+                  id={'menu-item-' + key}
+                  onClick={() => {
+                    setMenuActive((prev) => !prev);
+
+                    let params = setURLParams(searchParams);
+                    params.set('orderBy', key);
+
+                    startTransition(() => {
+                      setOptimisticOrder(key);
+
+                      router.push(`?${params}`);
+                    });
+                  }}
+                >
+                  {value}
+                </button>
+              ))}
             </div>
           </motion.div>
         )}
@@ -88,3 +137,10 @@ export default function OrderProducts() {
     </div>
   );
 }
+
+const orderBy = {
+  ultimos_agregados: 'Ultimos agregados',
+  mas_populares: 'Más populares',
+  menor_precio: 'Menor precio',
+  mayor_precio: 'Mayor precio'
+};

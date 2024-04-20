@@ -21,7 +21,7 @@ export default async function IndexPage({
 
             <div className="flex items-center gap-4">
               <FilterButtonMobile />
-              <OrderProducts />
+              <OrderProducts searchParams={searchParams} />
             </div>
           </div>
 
