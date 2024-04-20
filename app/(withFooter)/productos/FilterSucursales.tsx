@@ -61,7 +61,7 @@ export default function FilterSucursales({
                     startTransition(() => {
                       setOptimisticSucursales(newSucursales.sort());
 
-                      router.push(`?${params}`);
+                      router.push(`?${params}`, { scroll: false });
                     });
                   }}
                   checked={optimisticSucursales.includes(key)}

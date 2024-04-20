@@ -4,6 +4,8 @@ import { LoaderIcon } from 'lucide-react';
 import FiltersPanel from './FiltersPanel';
 import FilterButtonMobile from './FilterButtonMobile';
 import OrderProducts from './OrderProducts';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default async function IndexPage({
   searchParams
@@ -64,52 +66,27 @@ async function ProductsList({
         <h2 className="sr-only">Products</h2>
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          <a href="#" className="group/product">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
-                alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-                className="h-full w-full object-cover object-center group-hover/product:opacity-75"
-              />
-            </div>
-            <h3 className="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
-            <p className="mt-1 text-lg font-medium text-gray-900">$48</p>
-          </a>
-          <a href="#" className="group/product">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg"
-                alt="Olive drab green insulated bottle with flared screw lid and flat top."
-                className="h-full w-full object-cover object-center group-hover/product:opacity-75"
-              />
-            </div>
-            <h3 className="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
-            <p className="mt-1 text-lg font-medium text-gray-900">$35</p>
-          </a>
-          <a href="#" className="group/product">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg"
-                alt="Person using a pen to cross a task off a productivity paper card."
-                className="h-full w-full object-cover object-center group-hover/product:opacity-75"
-              />
-            </div>
-            <h3 className="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
-            <p className="mt-1 text-lg font-medium text-gray-900">$89</p>
-          </a>
-          <a href="#" className="group/product">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg"
-                alt="Hand holding black machined steel mechanical pencil with brass tip and top."
-                className="h-full w-full object-cover object-center group-hover/product:opacity-75"
-              />
-            </div>
-            <h3 className="mt-4 text-sm text-gray-700">
-              Machined Mechanical Pencil
-            </h3>
-            <p className="mt-1 text-lg font-medium text-gray-900">$35</p>
-          </a>
+          {/*  */}
+          {products.map((product) => (
+            <Link
+              key={product.id}
+              href={'/productos/' + product.id}
+              className="group/product"
+            >
+              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <Image
+                  src={product.imageUrl}
+                  fill
+                  alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                  className="h-full w-full object-cover object-center group-hover/product:opacity-75"
+                />
+              </div>
+              <h3 className="mt-4 text-sm text-gray-700">{product.title}</h3>
+              <p className="mt-1 text-lg font-medium text-gray-900">
+                ${product.price}
+              </p>
+            </Link>
+          ))}
 
           {/* <!-- More products... --> */}
         </div>
@@ -125,3 +102,176 @@ function Loading() {
     </div>
   );
 }
+
+const products = [
+  {
+    id: 'dasvud-412841-fsdivs',
+    title: 'Hormigonera',
+    description: '',
+    price: 140,
+    state: 'bastante_gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'capital_federal'
+    },
+    categoryTags: ['Construccion'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1674927125657-e8782933d009?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    promoted: false
+  },
+  {
+    id: '2v343876mn',
+    title: 'Torno',
+    description: '',
+    price: 90,
+    state: 'gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'la_plata'
+    },
+    categoryTags: ['Metales'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.unsplash.com/photo-1515630771457-09367d0ae038?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    promoted: false
+  },
+  {
+    id: 'nb3459m96',
+    title: 'Motosierra',
+    description: '',
+    price: 75,
+    state: 'poco_uso',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'la_plata'
+    },
+    categoryTags: [''],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.unsplash.com/photo-1613410341838-03185ad82422?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    promoted: false
+  },
+  {
+    id: 'nmp4328',
+    title: 'Taladro Atornillador Percutor',
+    description: '',
+    price: 23,
+    state: 'casi_nuevo',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'chivilcoy'
+    },
+    categoryTags: ['Todo'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    promoted: false
+  },
+  {
+    id: 'poytuj654',
+    title: 'Martillo',
+    description: '',
+    price: 5,
+    state: 'bastante_gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'chivilcoy'
+    },
+    categoryTags: ['Todo'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.pexels.com/photos/209235/pexels-photo-209235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    promoted: false
+  },
+  {
+    id: 'dsdivs',
+    title: 'Torno para madera',
+    description: '',
+    price: 15,
+    state: 'gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'bahia_blanca'
+    },
+    categoryTags: ['Carpinteria'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.pexels.com/photos/6790945/pexels-photo-6790945.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    promoted: false
+  },
+  {
+    id: '412841-fsdivs',
+    title: 'Sierra electrica',
+    description: '',
+    price: 47,
+    state: 'gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'dolores'
+    },
+    categoryTags: ['Construccion', 'Carpinteria'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.pexels.com/photos/8961342/pexels-photo-8961342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    promoted: false
+  },
+  {
+    id: '1234gfdsg',
+    title: 'Moladora',
+    description: '',
+    price: 55,
+    state: 'gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'chivilcoy'
+    },
+    categoryTags: ['Construccion'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.unsplash.com/photo-1674117068854-9dcc8a16dba2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    promoted: false
+  },
+  {
+    id: 'dads8372vs',
+    title: 'Lijadora electrica',
+    description: '',
+    price: 50,
+    state: 'gastado',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'bahia_blanca'
+    },
+    categoryTags: ['Carpinteria'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.pexels.com/photos/6004890/pexels-photo-6004890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    promoted: false
+  },
+  {
+    id: 'dvfas7621i',
+    title: 'Sierra circular',
+    description: '',
+    price: 350,
+    state: 'nuevo',
+    owner: {
+      name: 'Pedro Gonzalez',
+      rating: 3,
+      sucursal: 'chivilcoy'
+    },
+    categoryTags: ['Construccion', 'Carpinteria'],
+    createdAt: new Date(),
+    imageUrl:
+      'https://images.unsplash.com/photo-1559295759-389f1c534a1d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    promoted: false
+  }
+];
