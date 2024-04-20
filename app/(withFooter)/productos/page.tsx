@@ -53,12 +53,11 @@ async function ProductsList({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  let moviesPromise;
-  // Artificial delay
+  // ACA SE HACE EL FETCH PASANDO LOS SEARCHPARAMS QUE ESTEN PUESTOS (LOS FILTROS)
 
-  // let [movies] = await Promise.all([
-  //   new Promise((resolve) => setTimeout(resolve, 1000))
-  // ]);
+  let productos = await filtarProductos(products, searchParams);
+
+  // await Promise.all([new Promise((resolve) => setTimeout(resolve, 500))]);
 
   return (
     <div className="lg:col-span-3">
@@ -67,7 +66,7 @@ async function ProductsList({
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {/*  */}
-          {products.map((product) => (
+          {productos.map((product) => (
             <Link
               key={product.id}
               href={'/productos/' + product.id}
@@ -103,6 +102,7 @@ function Loading() {
   );
 }
 
+interface product {}
 const products = [
   {
     id: 'dasvud-412841-fsdivs',
@@ -275,3 +275,31 @@ const products = [
     promoted: false
   }
 ];
+
+const filtarProductos = async (
+  products: any,
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  }
+) => {
+  let filters: string[][] = [];
+  Object.entries(searchParams).forEach((entrie) => {
+    if (entrie[1] !== undefined) {
+      typeof entrie[1] !== 'string'
+        ? entrie[1].forEach((value) => filters.push([entrie[0], value]))
+        : filters.push([entrie[0], entrie[1]]);
+    }
+  });
+
+  if (!filters) {
+    return products;
+  }
+  return products;
+
+  // let filteredProducts: any[] = [];
+  // for (let i = 0; i < products.length; i++) {
+  //   const producto: any = products[i];
+
+  //   if (!
+  // }
+};
